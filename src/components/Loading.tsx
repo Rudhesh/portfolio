@@ -151,43 +151,44 @@ const Loading = ({ percent }: { percent: number }) => {
 export default Loading;
 
 export const setProgress = (setLoading: (value: number) => void) => {
-  let percent: number = 0;
-
-  let interval = setInterval(() => {
-    if (percent <= 50) {
-      let rand = Math.round(Math.random() * 5);
-      percent = percent + rand;
-      setLoading(percent);
-    } else {
+  let percent = 0;
+  let interval: ReturnType<typeof setInterval> | undefined = setInterval(() => {
+    percent = Math.min(percent + 1, 85);
+    setLoading(percent);
+    if (percent === 85 && interval) {
       clearInterval(interval);
-      interval = setInterval(() => {
-        percent = percent + Math.round(Math.random());
-        setLoading(percent);
-        if (percent > 91) {
-          clearInterval(interval);
-        }
-      }, 2000);
+      interval = undefined;
     }
   }, 100);
 
   function clear() {
-    clearInterval(interval);
+    if (interval) clearInterval(interval);
+    interval = undefined;
+    percent = 100;
     setLoading(100);
   }
 
   function loaded() {
     return new Promise<number>((resolve) => {
-      clearInterval(interval);
+      if (interval) clearInterval(interval);
+      interval = undefined;
       interval = setInterval(() => {
         if (percent < 100) {
-          percent++;
+          percent = Math.min(percent + 1, 100);
           setLoading(percent);
         } else {
           resolve(percent);
-          clearInterval(interval);
+          if (interval) clearInterval(interval);
+          interval = undefined;
         }
-      }, 2);
+      }, 12);
     });
   }
-  return { loaded, percent, clear };
+
+  function dispose() {
+    if (interval) clearInterval(interval);
+    interval = undefined;
+  }
+
+  return { loaded, get percent() { return percent; }, clear, dispose };
 };

@@ -224,35 +224,40 @@ const setCharacter = (
         loader.load(
           "/models/character.glb",
           async (gltf) => {
-            character = gltf.scene;
+            try {
+              character = gltf.scene;
 
-            // Apply vibrant styling to every mesh: Face, Head, Ears, Shirt, Shoes, Table, Computer, Keyboard, Glasses
-            applyVibrantStyling(character);
+              // Apply vibrant styling to every mesh: Face, Head, Ears, Shirt, Shoes, Table, Computer, Keyboard, Glasses
+              applyVibrantStyling(character);
 
-            await renderer.compileAsync(character, camera, scene);
-            character.traverse((child: any) => {
-              if (child.isMesh) {
-                const mesh = child as THREE.Mesh;
-                child.castShadow = false;
-                child.receiveShadow = false;
-                mesh.frustumCulled = true;
-                if (mesh.material && !Array.isArray(mesh.material)) {
-                  (mesh.material as THREE.ShaderMaterial).precision = "mediump";
+              await renderer.compileAsync(character, camera, scene);
+              character.traverse((child: any) => {
+                if (child.isMesh) {
+                  const mesh = child as THREE.Mesh;
+                  child.castShadow = false;
+                  child.receiveShadow = false;
+                  mesh.frustumCulled = true;
+                  if (mesh.material && !Array.isArray(mesh.material)) {
+                    (mesh.material as THREE.ShaderMaterial).precision = "mediump";
+                  }
                 }
-              }
-            });
+              });
 
-            resolve(gltf);
-            setCharTimeline(character, camera);
-            setAllTimeline();
+              setCharTimeline(character, camera);
+              setAllTimeline();
 
-            const footR = character.getObjectByName("footR");
-            if (footR) footR.position.y = 3.36;
+              const footR = character.getObjectByName("footR");
+              if (footR) footR.position.y = 3.36;
 
-            const footL = character.getObjectByName("footL");
-            if (footL) footL.position.y = 3.36;
+              const footL = character.getObjectByName("footL");
+              if (footL) footL.position.y = 3.36;
 
-            dracoLoader.dispose();
+              resolve(gltf);
+              dracoLoader.dispose();
+            } catch (error) {
+              dracoLoader.dispose();
+              reject(error);
+            }
           },
           undefined,
           (error) => {

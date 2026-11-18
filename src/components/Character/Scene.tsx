@@ -26,12 +26,29 @@ const Scene = () => {
       let container = { width: rect.width, height: rect.height };
       const aspect = container.width / container.height;
       const scene = sceneRef.current;
+      const progress = setProgress((value) => setLoading(value));
+      let loadingFinished = false;
+      let loadTimeout: ReturnType<typeof setTimeout> | undefined;
+      const finishLoading = (success: boolean) => {
+        if (loadingFinished) return;
+        loadingFinished = true;
+        if (loadTimeout) clearTimeout(loadTimeout);
+        if (success) void progress.loaded();
+        else progress.clear();
+      };
 
-      const renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: window.devicePixelRatio < 2,
-        powerPreference: "high-performance",
-      });
+      let renderer: THREE.WebGLRenderer;
+      try {
+        renderer = new THREE.WebGLRenderer({
+          alpha: true,
+          antialias: window.devicePixelRatio < 2,
+          powerPreference: "high-performance",
+        });
+      } catch (error) {
+        console.error("Unable to initialize the 3D renderer:", error);
+        finishLoading(false);
+        return () => progress.dispose();
+      }
       renderer.setSize(container.width, container.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -51,10 +68,14 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
-      loadCharacter().then((gltf) => {
+      loadTimeout = setTimeout(() => finishLoading(false), 15000);
+      void loadCharacter().then((gltf) => {
+        if (!gltf) {
+          finishLoading(false);
+          return;
+        }
         if (gltf) {
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
@@ -64,16 +85,18 @@ const Scene = () => {
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-            }, 2500);
-          });
+          finishLoading(true);
+          setTimeout(() => {
+            light.turnOnLights();
+            animations.startIntro();
+          }, 2500);
           window.addEventListener("resize", () =>
             handleResize(renderer, camera, canvasDiv, character)
           );
         }
+      }).catch((error) => {
+        console.error("Unable to load the 3D character; continuing without it:", error);
+        finishLoading(false);
       });
 
       let mouse = { x: 0, y: 0 },
@@ -129,6 +152,8 @@ const Scene = () => {
       animate();
       return () => {
         clearTimeout(debounce);
+        if (loadTimeout) clearTimeout(loadTimeout);
+        progress.dispose();
         scene.clear();
         renderer.dispose();
         window.removeEventListener("resize", () =>
