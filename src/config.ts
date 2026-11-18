@@ -1,192 +1,166 @@
 export const config = {
     developer: {
-        name: "Redoyanul",
-        fullName: "Redoyanul Haque",
-        title: "AI & Full-Stack Developer",
-        description: "AI & Full-Stack Developer building intelligent systems and modern web applications. Passionate about machine learning, deep learning, and creating next-gen autonomous agents."
+        name: "Rudesh",
+        fullName: "Rudesh Dhote",
+        title: "Full Stack Software Developer | Python & AI Applications",
+        description: "Full Stack Software Developer with professional experience building web applications, analytics dashboards, and REST APIs. Experienced in React, Next.js, TypeScript, and Node.js, with hands-on project work in Python, RAG systems, and Google Gemini API integration."
     },
     social: {
-        github: "red1-for-hek",
-        email: "redoyanul1234@gmail.com",
-        location: "Bangladesh"
+        github: "Rudhesh",
+        email: "rudeshdhote@gmail.com",
+        location: "Wildeshausen, Germany",
+        phone: "+49 1520 4385022",
+        portfolio: "https://my-portfolio-1991.netlify.app"
     },
     about: {
         title: "About Me",
-        description: "I am a self-taught AI & Full-Stack Developer from Bangladesh. I build intelligent systems, chatbots, and modern web applications. My expertise includes Machine Learning, Deep Learning, NLP, and Full-Stack Web Development with React, Node.js, and Python. Currently building next-gen AI Agents and JARVIS-like Personal Assistants. I have a competitive programming mindset and a deep passion for automation. Code is poetry, AI is the canvas."
+        description: "I am a Full Stack Software Developer based in Wildeshausen, Germany, with professional experience building robust web applications, analytics dashboards, and REST APIs. My core expertise spans React, Next.js, TypeScript, JavaScript, and Node.js, backed by hands-on engineering in Python and Retrieval-Augmented Generation (RAG). Currently expanding into Generative AI application development—integrating LLMs, embeddings, and vector databases like ChromaDB and Qdrant with Google's Gemini API. With a prior background in graphic design and UI/UX (Figma, Photoshop), I combine engineering rigor with clean visual design to build useful, reliable software."
     },
     experiences: [
         {
-            position: "Learning Something New",
-            company: "Self-Development",
-            period: "2025 - Present",
-            location: "Bangladesh",
-            description: "Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what's possible in tech.",
+            position: "Software Developer",
+            company: "Breitfuss Messtechnik GmbH",
+            period: "2023 - 2024",
+            location: "Germany",
+            description: "Built a robust analytics dashboard application using Next.js 13 and Tailwind CSS. Developed responsive user-interface components, data visualizations, and frontend architecture.",
             responsibilities: [
-                "Researching cutting-edge AI and ML technologies",
-                "Experimenting with new frameworks and tools",
-                "Contributing to open-source projects",
-                "Building innovative personal projects"
+                "Developed analytics dashboard application with Next.js 13 & Tailwind CSS",
+                "Created reusable, accessible UI components with high performance",
+                "Architected modern frontend workflows and state management",
+                "Collaborated on UX design and data presentation"
             ],
-            technologies: ["Research", "Innovation", "Open Source", "New Tech"]
+            technologies: ["Next.js 13", "Tailwind CSS", "TypeScript", "REST APIs", "UI/UX"]
         },
         {
-            position: "AI Engineer",
-            company: "Freelance & Projects",
-            period: "2025",
-            location: "Bangladesh",
-            description: "Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.",
+            position: "Junior Software Developer",
+            company: "Breeze Technologies",
+            period: "2022 - 2023",
+            location: "Germany",
+            description: "Developed frontend features with React, TypeScript, and Redux; built and maintained backend functionality using Node.js and Express.js. Optimized response times and supported Azure deployments.",
             responsibilities: [
-                "Building AI-powered chatbots and conversational agents",
-                "Developing machine learning models with TensorFlow and PyTorch",
-                "Working with LLMs and transformer architectures",
-                "Creating autonomous AI systems and automation tools"
+                "Engineered responsive UI features using React, TypeScript, and Redux",
+                "Maintained and expanded backend services with Node.js and Express.js",
+                "Improved REST API response times, component reusability, and code quality",
+                "Supported deployments on Microsoft Azure; used Git and Bitbucket in agile sprints"
             ],
-            technologies: ["Python", "TensorFlow", "PyTorch", "LLMs", "NLP", "AI Agents"]
+            technologies: ["React", "TypeScript", "Redux", "Node.js", "Express.js", "Azure", "Git", "Bitbucket"]
         },
         {
-            position: "Full-Stack Developer",
-            company: "Freelance & Projects",
-            period: "2024",
-            location: "Bangladesh",
-            description: "Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.",
+            position: "Full Stack Web Developer Intern",
+            company: "Active IT Recruitment",
+            period: "2021 - 2022",
+            location: "Germany",
+            description: "Refactored the primary search-bar component of a CRM application. Delegated filtering logic across frontend and backend for improved speed and reusability.",
             responsibilities: [
-                "Developing full-stack web applications using React and Node.js",
-                "Building RESTful APIs and integrating databases",
-                "Creating responsive and interactive user interfaces",
-                "Deploying and maintaining web applications"
+                "Refactored CRM search and filtering components",
+                "Enhanced component modularity and eliminated legacy code",
+                "Conducted bug fixes and performance optimizations"
             ],
-            technologies: ["React", "Node.js", "MongoDB", "Express", "Next.js", "TypeScript"]
+            technologies: ["React", "JavaScript", "Node.js", "REST APIs", "CRM Architecture"]
         },
         {
-            position: "Python Developer",
-            company: "Self-Taught & Projects",
-            period: "2023",
-            location: "Bangladesh",
-            description: "Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.",
+            position: "Full Stack Web Development",
+            company: "Digital Career Institute (DCI), Berlin",
+            period: "2021 - 2022",
+            location: "Berlin, Germany",
+            description: "Completed intensive one-year full-time training covering the MERN stack (MongoDB, Express, React, Node.js) with multiple end-to-end practical projects.",
             responsibilities: [
-                "Learning Python programming and core concepts",
-                "Building automation scripts and Discord bots",
-                "Exploring data structures and algorithms",
-                "Participating in competitive programming"
+                "Mastered modern JavaScript, React, Node.js, Express, and databases",
+                "Built and deployed full-stack web applications and REST APIs",
+                "Collaborated on agile team projects with Git version control"
             ],
-            technologies: ["Python", "Automation", "Scripting", "Discord.py", "Problem Solving"]
+            technologies: ["MERN Stack", "React", "Node.js", "Express", "MongoDB", "JavaScript"]
         },
         {
             position: "Graphic Designer",
-            company: "Freelance",
-            period: "2022",
-            location: "Bangladesh",
-            description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
+            company: "ONIDA & Onlinebecho",
+            period: "2017 - 2020",
+            location: "Design Studios",
+            description: "Professional creative design experience developing brand identities, promotional collateral, digital graphics, and UI assets.",
             responsibilities: [
-                "Designing logos and brand identity materials",
-                "Creating social media graphics and banners",
-                "Working with clients on creative projects",
-                "Learning design principles and visual aesthetics"
+                "Designed digital and print media assets, banners, and brand identities",
+                "Created UI design mockups and creative visual concepts",
+                "Mastered industry-standard creative tools"
             ],
-            technologies: ["Photoshop", "Illustrator", "Canva", "Figma", "Visual Design"]
-        },
-        {
-            position: "Microsoft Office",
-            company: "Begin Learning",
-            period: "2021",
-            location: "Bangladesh",
-            description: "Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.",
-            responsibilities: [
-                "Learning Microsoft Word, Excel, and PowerPoint",
-                "Creating documents and presentations",
-                "Understanding basic computer operations",
-                "Building foundational digital skills"
-            ],
-            technologies: ["MS Word", "MS Excel", "MS PowerPoint", "Computer Basics"]
+            technologies: ["Photoshop", "Illustrator", "After Effects", "Figma", "UI Design"]
         }
     ],
     projects: [
         {
             id: 1,
-            title: "Drishti",
-            category: "AI / LLM",
-            technologies: "Python, PyTorch, Transformers, FastAPI, React, MongoDB",
-            image: "/images/Drishti.png",
-            description: "Bangladesh's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali.",
-            link: "https://huggingface.co/red1-for-hek/drishti-ilm-x1"
+            title: "Porsche 918 Spyder AI RAG",
+            category: "Generative AI / RAG",
+            technologies: "Python, FastAPI, Google Gemini API, Qdrant Cloud, Embeddings, Next.js",
+            image: "/images/placeholder.webp",
+            description: "AI-powered question-answering system specialized in the Porsche 918 Spyder. Features website content ingestion, semantic text chunking, vector embeddings stored in Qdrant Cloud, and context retrieval connected to Google Gemini with a FastAPI backend and Next.js frontend.",
+            link: "https://github.com/Rudhesh"
         },
         {
             id: 2,
-            title: "VoteChain",
-            category: "Blockchain",
-            technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask, Node.js",
-            image: "/images/VoteChain.png",
-            description: "A decentralized election system built on blockchain technology ensuring transparent, tamper-proof, and verifiable voting. Features smart contracts for vote integrity and real-time result tracking.",
-            link: "https://github.com/red1-for-hek/smart-election-by-blockchain"
+            title: "Document-Based RAG Application",
+            category: "AI / Semantic Retrieval",
+            technologies: "Python, Google Gemini API, ChromaDB, Sentence Embeddings, FastAPI",
+            image: "/images/placeholder.webp",
+            description: "Document question-answering workflow featuring automated document parsing, semantic chunking, and ChromaDB vector search to retrieve relevant passages and provide grounded context to the Gemini LLM for hallucination-free answers.",
+            link: "https://github.com/Rudhesh"
+        },
+        {
+            id: 3,
+            title: "Analytics Dashboard Application",
+            category: "Full-Stack Web App",
+            technologies: "Next.js 13, Tailwind CSS, TypeScript, REST APIs, Recharts",
+            image: "/images/placeholder.webp",
+            description: "High-performance enterprise analytics dashboard built with Next.js 13 and Tailwind CSS. Features modular data visualization components, real-time KPI metrics, and responsive UI architecture.",
+            link: "https://github.com/Rudhesh"
         },
         {
             id: 4,
-            title: "Flood Spaces 2.0",
-            category: "AI / ML",
-            technologies: "Python, TensorFlow, Pandas, React, FastAPI, GIS",
-            image: "/images/FloodSpaces.png",
-            description: "Predicts flood risks across Bangladesh up to one month in advance and sends early alerts to help people prepare.",
-            link: "https://github.com/red1-for-hek/Flood-Spaces-2.0"
+            title: "Secret Track Store",
+            category: "Full-Stack E-Commerce",
+            technologies: "React, Node.js, Express, REST APIs, Tailwind CSS",
+            image: "/images/placeholder.webp",
+            description: "Full-stack record and music store web application featuring product catalog browsing, dynamic filtering, shopping cart functionality, and responsive UI design.",
+            link: "https://secret-track.netlify.app/"
         },
         {
             id: 5,
-            title: "Phoenix 3.0",
-            category: "AI Assistant",
-            technologies: "Python, Speech Recognition, PyAutoGUI, OpenAI API, Tkinter",
-            image: "/images/Phoenix3.0.png",
-            description: "A JARVIS-inspired personal AI desktop assistant. Controls system functions, manages tasks, answers queries, automates workflows, and provides voice-activated computing experience.",
-            link: "https://github.com/red1-for-hek/phoenix3.0"
+            title: "Weather Forecast & News",
+            category: "Web Application",
+            technologies: "React, JavaScript, OpenWeather API, News API, CSS3",
+            image: "/images/placeholder.webp",
+            description: "Interactive real-time weather forecasting and live news headline aggregation platform with location search, multi-day forecasts, and smooth animations.",
+            link: "https://brave-ramanujan-6b96c1.netlify.app/"
         },
         {
             id: 6,
-            title: "RedxChess",
-            category: "AI / Game Engine",
-            technologies: "Python, C++, Neural Networks, Bitboards, UCI Protocol",
-            image: "/images/RedxChess.png",
-            description: "A high-performance chess engine rated 3640 ELO. Features advanced search algorithms, neural network evaluation, and optimized bitboard representation for lightning-fast move generation.",
-            link: "/play"
-        },
-        {
-            id: 7,
-            title: "Prodesk",
-            category: "E-commerce",
-            technologies: "React, Node.js, MongoDB, Express, Stripe",
-            image: "/images/Prodesk.png",
-            description: "A complete e-commerce platform with secure checkout and smooth product browsing.",
-            link: "https://github.com/red1-for-hek/prodesk"
-        },
-        {
-            id: 8,
-            title: "HekTools",
-            category: "Security / Android",
-            technologies: "Kotlin, Android SDK, Firebase, Python, Encryption",
-            image: "/images/hektools.png",
-            description: "An advanced Android monitoring and security research tool. Features remote device management, activity logging, and encrypted data transmission for security testing purposes.",
-            link: ""
+            title: "Interactive Memory & Adventure Games",
+            category: "Interactive Games",
+            technologies: "JavaScript, HTML5 Canvas, CSS3 Animations",
+            image: "/images/placeholder.webp",
+            description: "Engaging interactive browser games featuring procedural game state logic, score tracking, card matching mechanics, and responsive canvas animations.",
+            link: "https://hungry-brown-ce19d2.netlify.app/"
         }
     ],
     contact: {
-        email: "redoyanul1234@gmail.com",
-        github: "https://github.com/red1-for-hek",
-        linkedin: "https://linkedin.com/in/red1-for-hek",
-        twitter: "https://x.com/red_1_ul",
-        facebook: "https://www.facebook.com/redoyanulhaque.hacker.official",
-        instagram: "https://www.instagram.com/red_1_ul"
+        email: "rudeshdhote@gmail.com",
+        github: "https://github.com/Rudhesh",
+        linkedin: "https://www.linkedin.com/in/rudesh-dhote-a00a22208/",
+        phone: "+49 1520 4385022",
+        portfolio: "https://my-portfolio-1991.netlify.app",
+        location: "Wildeshausen, Germany"
     },
     skills: {
         develop: {
-            title: "AI DEVELOPER",
-            description: "Building intelligent systems & AI solutions",
-            details: "Developing AI agents, chatbots, and machine learning models using Python, TensorFlow, and PyTorch. Specializing in LLMs, NLP, deep learning, and autonomous systems.",
-            tools: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn", "LLMs", "NLP", "Deep Learning", "Chatbots", "AI Agents"]
+            title: "FULL STACK & APIS",
+            description: "Modern web applications & scalable cloud services",
+            details: "Building responsive, high-performance web applications using React, Next.js, TypeScript, JavaScript, and Node.js. Experienced in analytics dashboards, component architecture, REST APIs, Express, and Microsoft Azure deployments.",
+            tools: ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "Express.js", "Redux", "Tailwind CSS", "REST APIs", "Azure", "Docker", "Git", "Jest"]
         },
         design: {
-            title: "FULL-STACK",
-            description: "Modern web development & scalable applications",
-            details: "Building responsive and performant web applications using React, Next.js, Node.js, and databases. Creating seamless user experiences with modern UI/UX principles.",
-            tools: ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "TailwindCSS", "REST APIs", "Docker", "Git"]
+            title: "AI & RAG APPLICATIONS",
+            description: "LLM integration, embeddings, vector databases & UI design",
+            details: "Developing intelligent AI applications with Python, FastAPI, Google Gemini API, ChromaDB, and Qdrant Cloud. Combining Retrieval-Augmented Generation (RAG) and semantic search with creative UI/UX design in Figma and Photoshop.",
+            tools: ["Python", "Google Gemini API", "RAG Systems", "ChromaDB", "Qdrant", "FastAPI", "MongoDB", "MySQL", "Figma", "Photoshop", "Illustrator", "After Effects"]
         }
     }
 };
-
-

@@ -1,84 +1,113 @@
 .myworks-page {
   min-height: 100vh;
-  background-color: var(--backgroundColor);
-  padding: 80px 40px;
+  background-color: #000000;
+  padding: 100px 40px;
   box-sizing: border-box;
+  position: relative;
 }
 
 .myworks-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .back-button {
-  display: inline-block;
-  color: var(--accentColor);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
   text-decoration: none;
-  font-size: 16px;
-  margin-bottom: 30px;
-  transition: all 0.3s ease;
-  padding: 10px 20px;
-  border: 1px solid var(--accentColor);
-  border-radius: 30px;
+  font-family: var(--fontMono);
+  font-size: 11.5px;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  transition: all 0.25s ease;
+  padding: 8px 20px;
+  border-radius: 9999px;
+  text-transform: uppercase;
 }
 
 .back-button:hover {
-  background: var(--accentColor);
-  color: #000;
+  background: #38bdf8;
+  color: #000000;
+  border-color: #38bdf8;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
 }
 
 .myworks-header h1 {
-  font-size: 70px;
-  font-weight: 500;
-  margin-bottom: 15px;
-  color: #fff;
+  font-family: "Mulish", sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 .myworks-header h1 span {
-  color: var(--accentColor);
+  color: #38bdf8;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .myworks-header p {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
+  font-family: "Mulish", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #a1a1aa;
+  max-width: 480px;
 }
 
 .myworks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 28px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .myworks-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: inherit;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  background: rgba(10, 10, 14, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 18px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
 .myworks-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accentColor);
-  box-shadow: 0 20px 40px rgba(194, 164, 255, 0.15);
+  transform: translateY(-6px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.2);
 }
 
 .myworks-card-number {
   position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 14px;
-  color: var(--accentColor);
-  font-weight: 600;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px 12px;
-  border-radius: 20px;
+  top: 14px;
+  left: 14px;
+  font-family: var(--fontMono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #38bdf8;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 4px 10px;
+  border-radius: 9999px;
   z-index: 1;
 }
 
@@ -86,57 +115,80 @@
   width: 100%;
   height: 220px;
   overflow: hidden;
+  background-color: #0b0b0e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .myworks-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 .myworks-card:hover .myworks-card-image img {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .myworks-card-info {
-  padding: 25px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .myworks-card-info h3 {
+  font-family: "Mulish", sans-serif;
   font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  color: #ffffff;
 }
 
 .myworks-card-category {
-  font-size: 14px;
-  color: var(--accentColor);
+  font-family: var(--fontMono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  width: fit-content;
+  text-transform: uppercase;
   margin-bottom: 12px;
+  font-weight: 700;
 }
 
 .myworks-card-description {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
-  margin-bottom: 15px;
+  font-family: "Mulish", sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #d4d4d8;
+  line-height: 1.65;
+  margin-bottom: 16px;
 }
 
 .myworks-card-tech {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--fontMono);
+  font-size: 11px;
+  color: #38bdf8;
   line-height: 1.5;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 600;
 }
 
 /* Responsive */
 @media only screen and (max-width: 768px) {
   .myworks-page {
-    padding: 60px 20px;
+    padding: 70px 20px;
   }
 
   .myworks-header h1 {
-    font-size: 45px;
+    font-size: 38px;
   }
 
   .myworks-grid {

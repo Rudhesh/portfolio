@@ -13,10 +13,12 @@ const Career = () => {
   return (
     <div className="career-section section-container">
       <div className="career-container">
-        <h2>
-          My career <span>&</span>
-          <br /> experience
-        </h2>
+        <div className="career-header">
+          <span className="career-telemetry-tag">// 02 / PROFESSIONAL TIMELINE &amp; TELEMETRY</span>
+          <h2>
+            CAREER <span>&amp;</span> EXPERIENCE
+          </h2>
+        </div>
         <div className="career-info">
           <div className="career-timeline">
             <div className="career-dot"></div>
@@ -25,12 +27,22 @@ const Career = () => {
             <div key={index} className="career-info-box">
               <div className="career-info-in">
                 <div className="career-role">
+                  <span className="career-period-tag">{exp.period}</span>
                   <h4>{exp.position}</h4>
-                  <h5>{exp.company}</h5>
+                  <h5>{exp.company} {exp.location ? `· ${exp.location}` : ""}</h5>
                 </div>
                 <h3>{getDisplayYear(exp.period)}</h3>
               </div>
-              <p>{exp.description}</p>
+              <div className="career-desc-wrapper">
+                <p>{exp.description}</p>
+                {exp.technologies && (
+                  <div className="career-tech-pills">
+                    {exp.technologies.map((tech, ti) => (
+                      <span key={ti} className="career-tech-pill">{tech}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>

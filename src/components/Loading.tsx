@@ -1,92 +1,150 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
-
-import Marquee from "react-fast-marquee";
+import { config } from "../config";
+import gsap from "gsap";
 
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
-  const [loaded, setLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const [displayPercent, setDisplayPercent] = useState(0);
+  const hasTriggered = useRef(false);
 
-  if (percent >= 100) {
-    setTimeout(() => {
-      setLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(true);
-      }, 1000);
-    }, 600);
-  }
+  const screenRef = useRef<HTMLDivElement>(null);
+  const percentRef = useRef<HTMLDivElement>(null);
+  const statusRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const welcomeRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const ambientRef = useRef<HTMLDivElement>(null);
 
+  // Smooth display percent counter
   useEffect(() => {
-    import("./utils/initialFX").then((module) => {
-      if (isLoaded) {
-        setClicked(true);
-        setTimeout(() => {
-          if (module.initialFX) {
-            module.initialFX();
-          }
-          setIsLoading(false);
-        }, 900);
-      }
-    });
-  }, [isLoaded]);
+    const target = Math.min(percent, 100);
+    if (target <= displayPercent) return;
+    const step = Math.ceil((target - displayPercent) / 4);
+    const timer = setTimeout(() => {
+      setDisplayPercent((prev) => Math.min(prev + step, target));
+    }, 16);
+    return () => clearTimeout(timer);
+  }, [percent, displayPercent]);
 
-  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
-    const { currentTarget: target } = e;
-    const rect = target.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    target.style.setProperty("--mouse-x", `${x}px`);
-    target.style.setProperty("--mouse-y", `${y}px`);
-  }
+  // Trigger GSAP welcome sequence when loading hits 100
+  useEffect(() => {
+    if (displayPercent >= 100 && !hasTriggered.current) {
+      hasTriggered.current = true;
+      const tl = gsap.timeline();
+
+      // 1. Briefly pause at 100%
+      tl.to({}, { duration: 0.5 });
+
+      // 2. Fade out percent counter, status tag, and progress bar
+      tl.to(
+        [percentRef.current, statusRef.current, progressBarRef.current?.parentElement],
+        {
+          opacity: 0,
+          y: -40,
+          duration: 0.6,
+          ease: "power2.in",
+          stagger: 0.08,
+        }
+      );
+
+      // 3. Reveal WELCOME text
+      tl.set(welcomeRef.current, { display: "block" });
+      tl.fromTo(
+        welcomeRef.current,
+        { clipPath: "inset(100% 0% 0% 0%)", opacity: 0 },
+        {
+          clipPath: "inset(0% 0% 0% 0%)",
+          opacity: 1,
+          duration: 0.9,
+          ease: "power3.out",
+        }
+      );
+
+      // 4. Hold WELCOME briefly
+      tl.to({}, { duration: 0.7 });
+
+      // 5. Slide entire screen upward out of view
+      tl.to(screenRef.current, {
+        y: "-100%",
+        duration: 1.1,
+        ease: "power4.inOut",
+        onComplete: () => {
+          import("./utils/initialFX").then((module) => {
+            if (module.initialFX) {
+              module.initialFX();
+            }
+            setIsLoading(false);
+          });
+        },
+      });
+
+      // Fade header out near end
+      tl.to(
+        headerRef.current,
+        { opacity: 0, duration: 0.4 },
+        "-=1.0"
+      );
+    }
+  }, [displayPercent]);
+
+  const getStatusText = () => {
+    if (displayPercent < 20) return "INITIALIZING SYSTEMS";
+    if (displayPercent < 50) return "LOADING 3D ASSETS";
+    if (displayPercent < 80) return "CALIBRATING RENDERER";
+    if (displayPercent < 100) return "FINALIZING";
+    return "READY";
+  };
 
   return (
-    <>
-      <div className="loading-header">
-        <a href="/#" className="loader-title" data-cursor="disable">
-          RedoyanulHaque
-        </a>
-        <div className={`loaderGame ${clicked && "loader-out"}`}>
-          <div className="loaderGame-container">
-            <div className="loaderGame-in">
-              {[...Array(27)].map((_, index) => (
-                <div className="loaderGame-line" key={index}></div>
-              ))}
-            </div>
-            <div className="loaderGame-ball"></div>
-          </div>
+    <div className="ldr-screen" ref={screenRef}>
+      {/* Top header bar */}
+      <div className="ldr-header" ref={headerRef}>
+        <span className="ldr-brand">
+          {config.developer.fullName.toUpperCase()}
+        </span>
+        <span className="ldr-year">PORTFOLIO {new Date().getFullYear()}</span>
+      </div>
+
+      {/* Ambient glow */}
+      <div className="ldr-ambient" ref={ambientRef} />
+
+      {/* Center content */}
+      <div className="ldr-center">
+        {/* Status tag */}
+        <div className="ldr-status" ref={statusRef}>
+          <span className="ldr-status-dot" />
+          {getStatusText()}
+        </div>
+
+        {/* Large percent counter */}
+        <div className="ldr-percent" ref={percentRef}>
+          <span className="ldr-percent-num">{displayPercent}</span>
+          <span className="ldr-percent-sign">%</span>
+        </div>
+
+        {/* WELCOME text, revealed after loading completes */}
+        <div className="ldr-welcome" ref={welcomeRef}>
+          WELCOME
         </div>
       </div>
-      <div className="loading-screen">
-        <div className="loading-marquee">
-          <Marquee>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
-            <span>&nbsp; AI Engineer &nbsp;</span> <span>&nbsp; Full Stack Developer &nbsp;</span>
-          </Marquee>
-        </div>
+
+      {/* Bottom progress bar */}
+      <div className="ldr-bar-track">
         <div
-          className={`loading-wrap ${clicked && "loading-clicked"}`}
-          onMouseMove={(e) => handleMouseMove(e)}
-        >
-          <div className="loading-hover"></div>
-          <div className={`loading-button ${loaded && "loading-complete"}`}>
-            <div className="loading-container">
-              <div className="loading-content">
-                <div className="loading-content-in">
-                  Loading <span>{percent}%</span>
-                </div>
-              </div>
-              <div className="loading-box"></div>
-            </div>
-            <div className="loading-content2">
-              <span>Welcome</span>
-            </div>
-          </div>
-        </div>
+          className="ldr-bar-fill"
+          ref={progressBarRef}
+          style={{ width: `${displayPercent}%` }}
+        />
       </div>
-    </>
+
+      {/* Bottom label */}
+      <div className="ldr-footer">
+        <span>FULL-STACK · AI ENGINEER · GERMANY</span>
+        <span>{displayPercent < 100 ? "LOADING..." : "COMPLETE"}</span>
+      </div>
+    </div>
   );
 };
 

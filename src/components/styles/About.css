@@ -1,101 +1,116 @@
 .about-section {
   display: flex;
   align-items: center;
-  justify-content: left;
-  place-items: center;
+  justify-content: flex-start;
   position: relative;
   opacity: 1;
   height: auto;
   width: var(--cWidth);
   margin: auto;
 }
+
 .about-me {
-  padding: 40px 0px;
-  padding-bottom: 0;
+  padding: 32px;
   width: 100%;
-  max-width: calc(100% - 15px);
+  max-width: 620px;
+  background: rgba(10, 10, 14, 0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
-.about-me h3 {
-  font-size: 18px;
+
+.about-me:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.about-telemetry-tag {
+  font-family: var(--fontMono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: #38bdf8;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: 400;
-  color: var(--accentColor);
-  margin-bottom: 15px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.about-me h3 {
+  font-family: "Mulish", sans-serif;
+  font-size: 26px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0 0 16px 0;
 }
 
 .about-me p {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
-  letter-spacing: 0.5px;
-  word-spacing: 2px;
+  font-family: "Mulish", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  letter-spacing: 0.015em;
+  color: #d4d4d8;
+  margin: 0;
+  text-align: left;
+  word-spacing: normal;
 }
 
-.about-me .split-word {
+.about-me p .split-word {
   display: inline-block;
-  margin-right: 0.3em;
+  margin-right: 0.25em;
 }
 
-.about-me .split-line {
-  display: block;
+.about-meta-pills {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.about-pill {
+  font-family: var(--fontMono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: #a1a1aa;
+  font-weight: 600;
+}
+
+.about-dot {
+  color: #52525b;
+  font-size: 12px;
 }
 
 @media only screen and (min-width: 600px) {
-  .about-section {
-    justify-content: center;
-  }
   .about-me {
-    width: 500px;
+    padding: 38px 42px;
   }
   .about-me h3 {
-    font-size: 22px;
-    letter-spacing: 6px;
+    font-size: 30px;
   }
   .about-me p {
-    font-size: 28px;
-    line-height: 32px;
+    font-size: 15.5px;
   }
 }
-@media only screen and (min-width: 768px) {
-  .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
-  }
-  .about-me h3 {
-    font-size: 25px;
-    letter-spacing: 7px;
-  }
-  .about-me p {
-    font-size: 33px;
-    line-height: 36px;
-  }
-  .about-section {
-    opacity: 1;
-  }
-}
+
 @media only screen and (min-width: 1025px) {
   .about-section {
     width: var(--cWidth);
-    justify-content: right;
+    justify-content: flex-end;
     max-width: 1920px;
     height: var(--vh);
     padding: 0px;
     opacity: 1;
   }
   .about-me {
-    padding: 0px;
-    width: 50%;
-  }
-  .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
-  }
-}
-@media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+    width: 48%;
+    max-width: 640px;
   }
 }

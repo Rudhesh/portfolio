@@ -30,63 +30,83 @@
 
 .hat-h2 {
   font-style: italic;
+  font-weight: 300;
 }
 
 .do-h2 {
-  color: var(--accentColor);
+  color: #38bdf8;
+  font-weight: 900;
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
 }
 
 .what-box-in {
   flex-direction: column;
-  height: 500px;
+  height: 520px;
   margin-left: 200px;
   position: relative;
   display: flex;
 }
 
 .what-content {
-  width: 450px;
+  width: 490px;
   height: 33%;
   min-height: 50%;
   transition: 0.5s;
-  /* border: 0.5px dashed rgba(255, 255, 255, 0.3); */
+  background: rgba(10, 10, 14, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
   position: relative;
-  padding: 50px;
+  padding: 40px;
   box-sizing: border-box;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
 .what-noTouch:hover,
 .what-content-active {
   min-height: 67%;
-  padding: 40px 50px;
+  padding: 35px 40px;
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15);
 }
 
 .what-noTouch:hover~.what-content,
 .what-box-in:hover .what-noTouch:not(:hover),
 .what-content.what-sibling {
   min-height: 33%;
-  padding: 10px 50px;
+  padding: 10px 40px;
 }
 
 .what-content h3 {
-  font-size: 35px;
-  letter-spacing: 1px;
+  font-family: "Mulish", sans-serif;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
   margin: 0;
 }
 
 .what-content p {
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 200;
-  letter-spacing: 0.7px;
+  font-family: "Mulish", sans-serif;
+  font-size: 13.5px;
+  line-height: 1.65;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  color: #d4d4d8;
+  margin: 10px 0;
 }
 
 .what-content h4 {
-  font-weight: 300;
-  letter-spacing: 1px;
-  margin: 0px;
-  font-size: 14px;
-  opacity: 0.3;
+  font-family: var(--fontMono);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin: 4px 0 0 0;
+  font-size: 10.5px;
+  color: #38bdf8;
+  text-transform: uppercase;
+  opacity: 1;
 }
 
 .what-content-in {
@@ -235,12 +255,14 @@
 }
 
 .what-content-in h5 {
-  font-weight: 300;
-  opacity: 0.5;
-  font-size: 12px;
-  letter-spacing: 1px;
-  font-family: "Geist", sans-serif;
-  margin-bottom: 5px;
+  font-weight: 700;
+  color: #a1a1aa;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  font-family: var(--fontMono);
+  text-transform: uppercase;
+  margin-top: 14px;
+  margin-bottom: 8px;
 }
 
 @keyframes whatBorders {
@@ -257,22 +279,44 @@
 
 .what-content-flex {
   display: flex;
-  gap: 5px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .what-tags {
-  font-size: 13px;
-  font-weight: 400;
-  padding: 2px 7px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid #ffffff50;
-  border-radius: 30px;
+  font-family: var(--fontMono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-@media only screen and (max-width: 1600px) {
-  .what-box h2 {
-    margin-right: 18%;
+.what-tags:hover {
+  background-color: rgba(56, 189, 248, 0.18);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1600px) {
+  .what-box:first-child {
+    justify-content: flex-start;
+    z-index: 20;
+  }
+
+  .what-box:first-child .title {
+    position: absolute;
+    top: 8%;
+    left: clamp(12px, 2vw, 32px);
+    width: 280px;
+    max-width: none;
+    margin: 0;
+    font-size: clamp(44px, 3.2vw, 56px);
+    line-height: 1;
   }
 }
 
@@ -320,7 +364,7 @@
   }
 
   .what-content {
-    width: 380px;
+    width: 410px;
   }
 }
 
@@ -366,6 +410,7 @@
 
   .what-box h2 {
     margin: 50px 0;
+    max-width: none;
     font-size: 55px;
     line-height: 53px;
   }
