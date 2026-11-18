@@ -222,7 +222,7 @@ const setCharacter = (
       try {
         let character: THREE.Object3D;
         loader.load(
-          "/models/character_edit_nose_glasses_2.glb",
+          "/models/character.glb",
           async (gltf) => {
             character = gltf.scene;
 
