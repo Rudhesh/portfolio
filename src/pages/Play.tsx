@@ -212,7 +212,9 @@ const sendMessage = async () => {
   setIsTyping(true);
 
   try {
-    const response = await fetch('http://localhost:8000/chat', {
+    const apiUrl = (import.meta.env.VITE_API_URL || 'https://portfolio-backend-ai-ten.vercel.app').replace(/\/$/, '');
+
+    const response = await fetch(`${apiUrl}/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
